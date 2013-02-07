@@ -54,7 +54,7 @@ This library does not provide any functions for the storage, retrieval or manipu
 providing a set of functions to generate and validate license keys.
 
 While care was taken to engineer a robust key generation algorithm, the security of the licensing scheme will be
-useless if final product can be hacked or reversed engineer.  Any hacker getting hold of your private key and the 
+useless if final product can be hacked or reversed engineered.  Any hacker getting hold of your private key and the 
 license vector used in your application will be able to generate their own keys.
 
 
