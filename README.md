@@ -3,6 +3,8 @@ MFLicensing
 
 Software License Code Generation and Validation Library
 
+When you want a secure way to generate human friendly licenses.
+
 
 Licensing
 =========
