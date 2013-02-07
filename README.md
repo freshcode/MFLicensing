@@ -115,4 +115,34 @@ Key Validation
 11. The new license key is compared to the provided license key
 
 
+How Secure Is This?
+===================
+
+Well, provided that your licensing vector information is kept secret, short of a brute force attack its near impossible
+to figure out.  Here's why:
+- The encoding characters are scrambled according to the licensing vector
+- The order of the bits in the binary key are scrambled according to the licensing vector
+- The number of bits assigned to the index is dependent on the licensing vector
+- The number of characters used in the key is also dependent on the licensing vector
+- The original index and digest provided, are each multiplied with pseudo random blocks of data generated from seeds in the licensing vector
+
+
+So, How Is That Helping Me?
+===========================
+
+It is obvious that if your software requires to have all the licensing vector information built-in in order to
+validate a license, it is therefore possible for anyone having access to your software's internal to also retrieve the
+licensing vector and compromise your licensing scheme.
+
+If you can use a software encryption and secure execution library, then its problem solved.
+
+If such a library is not readily accessible, you can run the license validation on a controlled server and have the
+software request an activation remotely.  You can then generate a public/private key pair to authorize the software,
+all the while never storing your licensing vector on the user's machine.
+
+This library helps you by providing a secure way of generating license keys, which cannot be reverse engineered
+(without the licensing vector), yet can be later verified for validity without having to store each individual key
+in a database.
+
+
 
