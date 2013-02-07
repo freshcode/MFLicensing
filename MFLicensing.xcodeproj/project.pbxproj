@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B4A067D24924EED849A3214 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AF6043A25D48F9BAB7AAAC /* libPods.a */; };
 		780BCCD616C2A59F00B6EC47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780BCCD516C2A59F00B6EC47 /* Cocoa.framework */; };
 		780BCCE016C2A59F00B6EC47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780BCCDE16C2A59F00B6EC47 /* InfoPlist.strings */; };
 		780BCCE216C2A59F00B6EC47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 780BCCE116C2A59F00B6EC47 /* main.m */; };
 		780BCCE616C2A59F00B6EC47 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 780BCCE416C2A59F00B6EC47 /* Credits.rtf */; };
 		780BCCE916C2A59F00B6EC47 /* MF_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 780BCCE816C2A59F00B6EC47 /* MF_AppDelegate.m */; };
 		780BCCEC16C2A59F00B6EC47 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780BCCEA16C2A59F00B6EC47 /* MainMenu.xib */; };
+		780BCCF316C2A8DA00B6EC47 /* mflicensing.c in Sources */ = {isa = PBXBuildFile; fileRef = 780BCCF216C2A8DA00B6EC47 /* mflicensing.c */; };
+		780BCCF616C2B4AF00B6EC47 /* bc.sh in Resources */ = {isa = PBXBuildFile; fileRef = 780BCCF516C2B4AF00B6EC47 /* bc.sh */; };
+		780BCCF916C2DBCE00B6EC47 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 780BCCF716C2DBCE00B6EC47 /* md5.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67AF6043A25D48F9BAB7AAAC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		780BCCD216C2A59F00B6EC47 /* MFLicensing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFLicensing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		780BCCD516C2A59F00B6EC47 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		780BCCD816C2A59F00B6EC47 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +34,12 @@
 		780BCCE716C2A59F00B6EC47 /* MF_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MF_AppDelegate.h; sourceTree = "<group>"; };
 		780BCCE816C2A59F00B6EC47 /* MF_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MF_AppDelegate.m; sourceTree = "<group>"; };
 		780BCCEB16C2A59F00B6EC47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		780BCCF216C2A8DA00B6EC47 /* mflicensing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mflicensing.c; sourceTree = "<group>"; };
+		780BCCF416C2A8E900B6EC47 /* mflicensing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mflicensing.h; sourceTree = "<group>"; };
+		780BCCF516C2B4AF00B6EC47 /* bc.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = bc.sh; sourceTree = SOURCE_ROOT; };
+		780BCCF716C2DBCE00B6EC47 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		780BCCF816C2DBCE00B6EC47 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		C2D602A30749439B96A11872 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				780BCCD616C2A59F00B6EC47 /* Cocoa.framework in Frameworks */,
+				4B4A067D24924EED849A3214 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +61,7 @@
 				780BCCDB16C2A59F00B6EC47 /* MFLicensing */,
 				780BCCD416C2A59F00B6EC47 /* Frameworks */,
 				780BCCD316C2A59F00B6EC47 /* Products */,
+				C2D602A30749439B96A11872 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +78,7 @@
 			children = (
 				780BCCD516C2A59F00B6EC47 /* Cocoa.framework */,
 				780BCCD716C2A59F00B6EC47 /* Other Frameworks */,
+				67AF6043A25D48F9BAB7AAAC /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,6 +98,11 @@
 			children = (
 				780BCCE716C2A59F00B6EC47 /* MF_AppDelegate.h */,
 				780BCCE816C2A59F00B6EC47 /* MF_AppDelegate.m */,
+				780BCCF516C2B4AF00B6EC47 /* bc.sh */,
+				780BCCF216C2A8DA00B6EC47 /* mflicensing.c */,
+				780BCCF416C2A8E900B6EC47 /* mflicensing.h */,
+				780BCCF716C2DBCE00B6EC47 /* md5.c */,
+				780BCCF816C2DBCE00B6EC47 /* md5.h */,
 				780BCCEA16C2A59F00B6EC47 /* MainMenu.xib */,
 				780BCCDC16C2A59F00B6EC47 /* Supporting Files */,
 			);
@@ -112,6 +131,7 @@
 				780BCCCE16C2A59F00B6EC47 /* Sources */,
 				780BCCCF16C2A59F00B6EC47 /* Frameworks */,
 				780BCCD016C2A59F00B6EC47 /* Resources */,
+				2018F6033BD24ED2A08E3635 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -157,10 +177,28 @@
 				780BCCE016C2A59F00B6EC47 /* InfoPlist.strings in Resources */,
 				780BCCE616C2A59F00B6EC47 /* Credits.rtf in Resources */,
 				780BCCEC16C2A59F00B6EC47 /* MainMenu.xib in Resources */,
+				780BCCF616C2B4AF00B6EC47 /* bc.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2018F6033BD24ED2A08E3635 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		780BCCCE16C2A59F00B6EC47 /* Sources */ = {
@@ -169,6 +207,8 @@
 			files = (
 				780BCCE216C2A59F00B6EC47 /* main.m in Sources */,
 				780BCCE916C2A59F00B6EC47 /* MF_AppDelegate.m in Sources */,
+				780BCCF316C2A8DA00B6EC47 /* mflicensing.c in Sources */,
+				780BCCF916C2DBCE00B6EC47 /* md5.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +303,7 @@
 		};
 		780BCCF016C2A59F00B6EC47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2D602A30749439B96A11872 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -275,6 +316,7 @@
 		};
 		780BCCF116C2A59F00B6EC47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2D602A30749439B96A11872 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -304,6 +346,7 @@
 				780BCCF116C2A59F00B6EC47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

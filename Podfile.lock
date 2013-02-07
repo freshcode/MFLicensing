@@ -1,0 +1,11 @@
+
+SPEC CHECKSUMS: 
+  MFMathLib: 128ac3436814198d772c2fafa9db0a4aabee26af
+
+COCOAPODS: 0.16.0
+
+DEPENDENCIES: 
+- MFMathLib (~> 1.0.0)
+
+PODS: 
+- MFMathLib (1.0.0)
