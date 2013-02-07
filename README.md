@@ -11,7 +11,7 @@ Licensing
 
 Public Domain
 
-by Freshcode, Cutting edge Mac, iPhone & iPad software development. http://madefresh.ca/
+by Freshcode, Cutting edge Mac, iPhone, iPad & Android software development. http://madefresh.ca/
 
 Originally created by Dave Poirier on 2013-02-01.
 
