@@ -47,3 +47,14 @@ The keys generated can be validated by a software with knowledge of the original
 the key, and may include a user provided component (provided as a 128-bit digest to the library).
 
 
+Limitations
+===========
+
+This library does not provide any functions for the storage, retrieval or manipulation of licensing data other than
+providing a set of functions to generate and validate license keys.
+
+While care was taken to engineer a robust key generation algorithm, the security of the licensing scheme will be
+useless if final product can be hacked or reversed engineer.  Any hacker getting hold of your private key and the 
+license vector used in your application will be able to generate their own keys.
+
+
