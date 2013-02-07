@@ -93,7 +93,7 @@ Key Generation
 5. The bits positions in the final key are scrambled for both the index and validator
 6. The index is used to initialize a random number generator and a block of 128-bit of random data is created
 7. The 128-bit digest is multiplied to the previous block generated to get a 256-bit intermediate block
-8. The salt sees are used to initialize a random number generator and a block of 256-bit of random data is created
+8. The salt seeds are used to initialize a random number generator and a block of 256-bit of random data is created
 9. The two 256-bit blocks are multiplied together to obtain a 512-bit block
 10. The 512-bit block is divided by the 256-bit prime number to obtain a unique 256-bit remainder, referred to as validator
 11. An array of "bits" is filled in the scrambled order with the bits of the index and as many bits of the validator as can be fitted
