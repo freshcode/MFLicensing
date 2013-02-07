@@ -36,35 +36,74 @@ void mfLicensingInitializeDefaultVector( mfLicensingVector *vector )
     vector->salt_seed[0] = 0xE7DF;
     vector->salt_seed[1] = 0x7514;
     vector->salt_seed[2] = 0x45B4;
-    vector->privateKey = 0;
+    vector->private_key = 0;
 }
-void mfLicensingSetPrivateKey( mfLicensingVector *vector, const mfLicensingPrivateKey *key )
+int mfLicensingSetPrivateKey( mfLicensingVector *vector, const mfLicensingPrivateKey *key )
 {
-    vector->privateKey = key;
+    if((key->data.h128.h64.h32.h16.h8 == 0) ||
+       ((key->data.l128.l64.l32.l16.l8 & 0x01) == 0) ) {
+        vector->private_key = 0;
+        return -1;
+    }
+    vector->private_key = key;
+    return 0;
 }
-void mfLicensingSetEncodingCharacters( mfLicensingVector *vector, const unsigned char *characters )
+int mfLicensingSetEncodingCharacters( mfLicensingVector *vector, const unsigned char *characters )
 {
+    // check how many characters are provided
+    unsigned int char_count = 0;
+    vector->coded_chars = 0;
+    while( characters[char_count] != 0 ) {
+        char_count++;
+        if( char_count >= 100 ) {
+            // too many characters in string, assume an invalid pointer
+            return -1;
+        }
+    }
+
+    // make sure there are no duplicated characters
+    unsigned int char_i = 0;
+    while( char_i < char_count ) {
+        unsigned char c = characters[char_i];
+        unsigned int char_j = char_i + 1;
+        while( char_j < char_count ) {
+            if( c == characters[char_j] ) {
+                // duplicated character
+                return -1;
+            }
+            char_j++;
+        }
+    }
     vector->coded_chars = characters;
+    return 0;
 }
-void mfLicensingSetKeyLength( mfLicensingVector *vector, unsigned char characters )
+
+int mfLicensingSetKeyLength( mfLicensingVector *vector, unsigned char characters )
 {
     vector->key_length = characters;
+    return 0;
 }
-void mfLicensingSetKeyIndexLength( mfLicensingVector *vector, unsigned char bits )
+int mfLicensingSetKeyIndexLength( mfLicensingVector *vector, unsigned char bits )
 {
+    if( bits > 32 ) {
+        return -1;
+    }
     vector->index_bits = bits;
+    return 0;
 }
-void mfLicensingSetScramblingSeed( mfLicensingVector *vector, unsigned short int seed[3])
+int mfLicensingSetScramblingSeed( mfLicensingVector *vector, unsigned short int seed[3])
 {
     vector->scrambling_seed[0] = seed[0];
     vector->scrambling_seed[1] = seed[1];
     vector->scrambling_seed[2] = seed[2];
+    return 0;
 }
-void mfLicensingSetSaltSeed( mfLicensingVector *vector, unsigned short int seed[3] )
+int mfLicensingSetSaltSeed( mfLicensingVector *vector, unsigned short int seed[3] )
 {
     vector->salt_seed[0] = seed[0];
     vector->salt_seed[1] = seed[1];
     vector->salt_seed[2] = seed[2];
+    return 0;
 }
 
 int mfLicensingInitializePrivateKeyFromPrime( mfLicensingPrivateKey *key, const unsigned char *decimalRepresentation )
@@ -107,6 +146,10 @@ int mfLicensingInitializeCodecParams(mfLicensingCodecParams *codec_params, mfLic
     mfU256 encoded_base;
     mfU256 max_key;
     mfU256 ignored;
+
+    if( vector->private_key == 0 || vector->coded_chars == 0 ) {
+        return 0;
+    }
 
     // Compute key encoding base
     unsigned char encoding_chars = 0;
@@ -225,38 +268,38 @@ unsigned char* mfLicensingGenerateLicense( mfLicensingVector *vector, mfLicensin
 //            vector->scrambling_seed[1],
 //            vector->scrambling_seed[2]);
 //    fprintf(stderr, "private key:\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n",
-//            vector->privateKey->data.b[0],
-//            vector->privateKey->data.b[1],
-//            vector->privateKey->data.b[2],
-//            vector->privateKey->data.b[3],
-//            vector->privateKey->data.b[4],
-//            vector->privateKey->data.b[5],
-//            vector->privateKey->data.b[6],
-//            vector->privateKey->data.b[7],
-//            vector->privateKey->data.b[8],
-//            vector->privateKey->data.b[9],
-//            vector->privateKey->data.b[10],
-//            vector->privateKey->data.b[11],
-//            vector->privateKey->data.b[12],
-//            vector->privateKey->data.b[13],
-//            vector->privateKey->data.b[14],
-//            vector->privateKey->data.b[15],
-//            vector->privateKey->data.b[16],
-//            vector->privateKey->data.b[17],
-//            vector->privateKey->data.b[18],
-//            vector->privateKey->data.b[19],
-//            vector->privateKey->data.b[20],
-//            vector->privateKey->data.b[21],
-//            vector->privateKey->data.b[22],
-//            vector->privateKey->data.b[23],
-//            vector->privateKey->data.b[24],
-//            vector->privateKey->data.b[25],
-//            vector->privateKey->data.b[26],
-//            vector->privateKey->data.b[27],
-//            vector->privateKey->data.b[28],
-//            vector->privateKey->data.b[29],
-//            vector->privateKey->data.b[30],
-//            vector->privateKey->data.b[31]);
+//            vector->private_key->data.b[0],
+//            vector->private_key->data.b[1],
+//            vector->private_key->data.b[2],
+//            vector->private_key->data.b[3],
+//            vector->private_key->data.b[4],
+//            vector->private_key->data.b[5],
+//            vector->private_key->data.b[6],
+//            vector->private_key->data.b[7],
+//            vector->private_key->data.b[8],
+//            vector->private_key->data.b[9],
+//            vector->private_key->data.b[10],
+//            vector->private_key->data.b[11],
+//            vector->private_key->data.b[12],
+//            vector->private_key->data.b[13],
+//            vector->private_key->data.b[14],
+//            vector->private_key->data.b[15],
+//            vector->private_key->data.b[16],
+//            vector->private_key->data.b[17],
+//            vector->private_key->data.b[18],
+//            vector->private_key->data.b[19],
+//            vector->private_key->data.b[20],
+//            vector->private_key->data.b[21],
+//            vector->private_key->data.b[22],
+//            vector->private_key->data.b[23],
+//            vector->private_key->data.b[24],
+//            vector->private_key->data.b[25],
+//            vector->private_key->data.b[26],
+//            vector->private_key->data.b[27],
+//            vector->private_key->data.b[28],
+//            vector->private_key->data.b[29],
+//            vector->private_key->data.b[30],
+//            vector->private_key->data.b[31]);
 //    fprintf(stderr, "digest:\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n",
 //            digest->md5hash.b[0],
 //            digest->md5hash.b[1],
@@ -317,7 +360,7 @@ unsigned char* mfLicensingGenerateLicense( mfLicensingVector *vector, mfLicensin
         mfMultiplyU256(&salt, &mixed_block, &pivot.l256, &pivot.h256);
         
         // Take most significant 256-bits of previous result, divide by the private key
-        mfDivideU256(&pivot.h256, &vector->privateKey->data, &ignored, &validator);
+        mfDivideU256(&pivot.h256, &vector->private_key->data, &ignored, &validator);
         // Remainder is the "validator" for the key
     }
 
