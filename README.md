@@ -7,7 +7,7 @@ When you want a secure way to generate human friendly licenses.
 
 
 Licensing
-=========
+---------
 
 Public Domain
 
@@ -17,13 +17,13 @@ Originally created by Dave Poirier on 2013-02-01.
 
 
 Compatibility
-=============
+-------------
 
 C compiler with support for 32-bit unsigned integers.
 
 
 Dependencies
-============
+------------
 
 For the library files mflicensing.c/.h:
 - MFMathLib (https://github.com/freshcode/MFMathLib)
@@ -50,7 +50,7 @@ the key, and may include a user provided component (provided as a 128-bit digest
 
 
 Limitations
-===========
+-----------
 
 This library does not provide any functions for the storage, retrieval or manipulation of licensing data other than
 providing a set of functions to generate and validate license keys.
@@ -61,7 +61,7 @@ license vector used in your application will be able to generate their own keys.
 
 
 Overview
-========
+--------
 
 The library uses a number of parameters to generate the keys, including:
 - 256-bit prime number (your private key)
@@ -130,7 +130,7 @@ to figure out.  Here's why:
 
 
 So, How Is That Helping Me?
-===========================
+---------------------------
 
 It is obvious that if your software requires to have all the licensing vector information built-in in order to
 validate a license, it is therefore possible for anyone having access to your software's internal to also retrieve the
