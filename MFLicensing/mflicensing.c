@@ -256,68 +256,6 @@ int mfLicensingInitializeCodecParams(mfLicensingCodecParams *codec_params, mfLic
 
 unsigned char* mfLicensingGenerateLicense( mfLicensingVector *vector, mfLicensingDigest *digest, unsigned int index )
 {
-//    fprintf(stderr, "generating license for index %u\n", index);
-//    fprintf(stderr, "vector:\n\tcoded chars: %s\n\tindex bits: %u\n\tkey length: %u\n\tsalt: %u %u %u\n\tscrambling: %u %u %u\n",
-//            vector->coded_chars,
-//            vector->index_bits,
-//            vector->key_length,
-//            vector->salt_seed[0],
-//            vector->salt_seed[1],
-//            vector->salt_seed[2],
-//            vector->scrambling_seed[0],
-//            vector->scrambling_seed[1],
-//            vector->scrambling_seed[2]);
-//    fprintf(stderr, "private key:\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n",
-//            vector->private_key->data.b[0],
-//            vector->private_key->data.b[1],
-//            vector->private_key->data.b[2],
-//            vector->private_key->data.b[3],
-//            vector->private_key->data.b[4],
-//            vector->private_key->data.b[5],
-//            vector->private_key->data.b[6],
-//            vector->private_key->data.b[7],
-//            vector->private_key->data.b[8],
-//            vector->private_key->data.b[9],
-//            vector->private_key->data.b[10],
-//            vector->private_key->data.b[11],
-//            vector->private_key->data.b[12],
-//            vector->private_key->data.b[13],
-//            vector->private_key->data.b[14],
-//            vector->private_key->data.b[15],
-//            vector->private_key->data.b[16],
-//            vector->private_key->data.b[17],
-//            vector->private_key->data.b[18],
-//            vector->private_key->data.b[19],
-//            vector->private_key->data.b[20],
-//            vector->private_key->data.b[21],
-//            vector->private_key->data.b[22],
-//            vector->private_key->data.b[23],
-//            vector->private_key->data.b[24],
-//            vector->private_key->data.b[25],
-//            vector->private_key->data.b[26],
-//            vector->private_key->data.b[27],
-//            vector->private_key->data.b[28],
-//            vector->private_key->data.b[29],
-//            vector->private_key->data.b[30],
-//            vector->private_key->data.b[31]);
-//    fprintf(stderr, "digest:\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n\t%02X%02X%02X%02X %02X%02X%02X%02X\n",
-//            digest->md5hash.b[0],
-//            digest->md5hash.b[1],
-//            digest->md5hash.b[2],
-//            digest->md5hash.b[3],
-//            digest->md5hash.b[4],
-//            digest->md5hash.b[5],
-//            digest->md5hash.b[6],
-//            digest->md5hash.b[7],
-//            digest->md5hash.b[8],
-//            digest->md5hash.b[9],
-//            digest->md5hash.b[10],
-//            digest->md5hash.b[11],
-//            digest->md5hash.b[12],
-//            digest->md5hash.b[13],
-//            digest->md5hash.b[14],
-//            digest->md5hash.b[15] );
-
     mfU256 validator; mfZero256(&validator);
     mfU256 binary_key; mfZero256(&binary_key);
     unsigned char *bits = 0;
@@ -570,6 +508,10 @@ int mfLicensingValidateLicense( mfLicensingVector *vector, mfLicensingDigest *di
 
 void randomize128UsingIntSeed( mfU128 *x, unsigned int seed )
 {
+    unsigned short int long_seed[3];
+    long_seed[0] = seed & 0xFFFF;
+    long_seed[1] = (seed >> 16) & 0xFFFF;
+    long_seed[2] = 0x4267;
     srand48( seed );
     *((unsigned int *)&x->l64.l32) = (unsigned int)(lrand48() & 0xFFFFFFFF);
     *((unsigned int *)&x->l64.h32) = (unsigned int)(lrand48() & 0xFFFFFFFF);

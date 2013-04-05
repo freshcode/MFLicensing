@@ -176,9 +176,9 @@ static unsigned char samplePrivateKey[] = "1048790829713117586646307642085933640
     data.h128.h64.h32.l16.l8 = random() & 0xFF;
     data.h128.h64.h32.l16.h8 = random() & 0xFF;
     data.h128.h64.h32.h16.l8 = random() & 0xFF;
-    data.h128.h64.h32.h16.h8 = random() & 0xFF;
+    data.h128.h64.h32.h16.h8 = random() & 0xF;
     while( data.h128.h64.h32.h16.h8 == 0 ) {
-        data.h128.h64.h32.h16.h8 = random() & 0xFF;
+        data.h128.h64.h32.h16.h8 = random() & 0xF;
     }
 
     // Get a decimal representation so we can send query to Wolfram Alpha
